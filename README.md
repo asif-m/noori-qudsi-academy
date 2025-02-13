@@ -6,7 +6,11 @@ Install dependency
 npm i
 ```
 
-Run the application
+Run the application locally
 ```
 npm run dev
+```
+Build
+```
+npm run build
 ```
