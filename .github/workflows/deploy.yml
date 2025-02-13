@@ -19,7 +19,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 23
+          node-version: '23'
 
       - name: Install dependencies
         run: npm install
@@ -27,7 +27,7 @@ jobs:
       - name: Build project
         run: npm run build
         env:
-          VITE_BASE: '/${{ github.event.repository.name }}/'
+          VITE_BASE: "${{ github.event.repository.name }}"
 
       - name: Verify build output
         run: ls -l dist
@@ -39,12 +39,12 @@ jobs:
         uses: actions/upload-pages-artifact@v3
         with:
           path: dist
-          name: github-pages
+          name: "github-pages"
 
       - name: List uploaded artifacts
-        run: echo "Uploaded artifact: github-pages"
+        run: 'echo Uploaded artifact: github-pages'
 
       - name: Deploy to GitHub Pages
         uses: actions/deploy-pages@v2
         with:
-          artifact_name: github-pages
+          artifact_name: "github-pages"
