@@ -36,15 +36,15 @@ jobs:
         uses: actions/configure-pages@v4
 
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-artifact@v3
         with:
-          path: dist
-          name: "github-pages"
+          name: build
+          path: ./dist
 
       - name: List uploaded artifacts
-        run: 'echo Uploaded artifact: github-pages'
+        run: 'echo Uploaded artifact: build'
 
       - name: Deploy to GitHub Pages
         uses: actions/deploy-pages@v2
         with:
-          artifact_name: "github-pages"
+          artifact_name: "build"
