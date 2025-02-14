@@ -1,6 +1,7 @@
 import { useOnce } from "../../hooks/useOnce";
 import { styles } from '../../styles';
 import QrCodeImage from "../../assets/qrcode.png";
+import { useEffect, useState } from "react";
 export default function Donate() {
 	useOnce(() => {
 		PayPal.Donation.Button({
@@ -60,6 +61,7 @@ function QrCode() {
 function BankDetails() {
 	const routingNumber = "071025661";
 	const accountNumber = "68321678";
+	const [showCopiedToClipboard, setShowCopiedToClipboard] = useState(false);
 	async function copyTextToClipboard() {
 		const textToCopy = `
 		Routing #: ${routingNumber} 
@@ -67,9 +69,19 @@ function BankDetails() {
 		`
 		try {
 		  await navigator.clipboard.writeText(textToCopy);
+		  setShowCopiedToClipboard(true);
 		} catch (err) {
 		}
 	  }
+	  useEffect(()=>{
+		let timerId = 0;
+		if(showCopiedToClipboard){
+			timerId = setTimeout(()=>{
+				setShowCopiedToClipboard(false);
+			}, 3000)
+		}
+		return ()=> clearTimeout(timerId)
+	  }, [showCopiedToClipboard])
 
 	return <div className="w-64 h-64 rounded overflow-hidden shadow-lg p-5 text-sm flex items-center justify-center text-center">
 		<div>
@@ -79,6 +91,9 @@ function BankDetails() {
 				<button onClick={copyTextToClipboard}>
 					<svg viewBox="0 0 24 24" style={{ height: "32px", width: "32px" }}><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg>
 				</button>
+			</div>
+			<div className="text-[10px]">
+			{showCopiedToClipboard? "✅ Bank details copied to clipboard":" "}
 			</div>
 		</div>
 	</div>;
