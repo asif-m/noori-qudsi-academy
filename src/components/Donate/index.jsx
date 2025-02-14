@@ -29,9 +29,9 @@ export default function Donate() {
 						<div>[Sahih Al-Bukhari]</div>
 					</div>
 					<div className="flex flex-wrap justify-center gap-6">
-						<QrCode />
 						<BankDetails />
 						<PaypalDonate />
+						<QrCode />
 					</div>
 					<div className="text-sm">EIN (Taxpayer Id) : 87-1825550</div>
 					<div>
@@ -58,13 +58,28 @@ function QrCode() {
 }
 
 function BankDetails() {
+	const routingNumber = "071025661";
+	const accountNumber = "68321678";
+	async function copyTextToClipboard() {
+		const textToCopy = `
+		Routing #: ${routingNumber} 
+		Account #: ${accountNumber}
+		`
+		try {
+		  await navigator.clipboard.writeText(textToCopy);
+		} catch (err) {
+		}
+	  }
+
 	return <div className="w-64 h-64 rounded overflow-hidden shadow-lg p-5 text-sm flex items-center justify-center text-center">
 		<div>
-			<div>Routing number: </div>
-			<div>Account Details: </div>
-			<button>
-				<svg viewBox="0 0 24 24" style={{ height: "16px", width: "16px" }}><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg>
-			</button>
+			<div>Routing #: {routingNumber} </div>
+			<div>Account #: {accountNumber}</div>
+			<div className="py-3">
+				<button onClick={copyTextToClipboard}>
+					<svg viewBox="0 0 24 24" style={{ height: "32px", width: "32px" }}><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg>
+				</button>
+			</div>
 		</div>
 	</div>;
 }
