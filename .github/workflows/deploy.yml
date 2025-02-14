@@ -19,7 +19,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '23'
+          node-version: '18' # Use an LTS version
 
       - name: Install dependencies
         run: npm install
@@ -27,7 +27,7 @@ jobs:
       - name: Build project
         run: npm run build
         env:
-          VITE_BASE: "${{ github.event.repository.name }}"
+          VITE_BASE: "${{ env.PUBLIC_URL }}" # Correctly handle subpaths
 
       - name: Verify build output
         run: ls -l dist
@@ -40,9 +40,6 @@ jobs:
         with:
           name: build
           path: ./dist
-
-      - name: List uploaded artifacts
-        run: 'echo Uploaded artifact: build'
 
       - name: Deploy to GitHub Pages
         uses: actions/deploy-pages@v2
