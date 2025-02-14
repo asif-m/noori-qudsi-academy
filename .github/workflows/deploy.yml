@@ -38,10 +38,10 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
-          name: noori-qudsi-academy
+          name: build
           path: ./dist
 
       - name: Deploy to GitHub Pages
         uses: actions/deploy-pages@v4
         with:
-          artifact_name: noori-qudsi-academy
+          artifact_name: build
