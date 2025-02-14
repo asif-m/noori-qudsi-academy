@@ -15,7 +15,7 @@ const Navbar = () => {
           }}
         >
           <img src={logo} alt="logo" className="w-9 h-9 object-contain" />
-          <p className="text-green-700 text-[20px] font-bold cursor-pointer flex">
+          <p className="text-green-700 text-base sm:text-sm-[16px] md:text-[20px] lg:text-[20px] font-bold cursor-pointer flex">
             NOORI QUDSI ACADEMY
           </p>
         </Link>
