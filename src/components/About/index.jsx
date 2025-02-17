@@ -4,7 +4,7 @@ const About = () => {
   return (
     <div className='block'>
       <h6 className={styles.sectionHeadText}>About us</h6>
-      <div>Noori Qudsi Academy is an Islamic organization dedicated to serving the muslim community based on authentic traditions of Ahl as-Sunnah wal-Jamāʻah.</div>
+      <div>Noori Qudsi Academy is a Sunni masjid in Manteca, committed to serving the Muslim community through the authentic teachings and traditions of Ahl as-Sunnah wal-Jamāʻah.</div>
       <div className='py-3'></div>
       <div>Services and programs it offers include:</div>
       <div className='py-3'></div>
