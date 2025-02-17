@@ -73,34 +73,33 @@ export const PrayerTime = () => {
                   </tr>
                   <tr className="hover:bg-slate-50">
                     <td className="p-4 border-b border-slate-200">
-                      <p className="block text-sm text-slate-800">
+                      <p className="block text-xs text-slate-800 italic">
                         Sunrise
                       </p>
                     </td>
                     <td className="p-4 border-b border-slate-200">
-                      <p className="block text-sm text-slate-800">
+                      <p className="block text-xs text-slate-800 italic">
                         {prayerTimes["Sunrise"]}
                       </p>
                     </td>
                     <td className="p-4 border-b border-slate-200">
-                      <p className="block text-sm text-slate-800">
+                      <p className="block text-xs text-slate-800">
                       </p>
                     </td>
                   </tr>
                   <tr className="hover:bg-slate-50">
                     <td className="p-4 border-b border-slate-200">
-                      <p className="block text-sm text-slate-800">
+                      <p className="block text-xs text-slate-800 italic">
                         Zawal
                       </p>
                     </td>
                     <td className="p-4 border-b border-slate-200">
-                      <p className="block text-sm text-slate-800">
+                      <p className="block text-xs text-slate-800 italic">
                         {prayerTimes["Zawal"]}
                       </p>
                     </td>
                     <td className="p-4 border-b border-slate-200">
-                      <p className="block text-sm text-slate-800">
-                        {Iqama["Zawal"]}
+                      <p className="block text-xs text-slate-800 italic">
                       </p>
                     </td>
                   </tr>
@@ -169,6 +168,23 @@ export const PrayerTime = () => {
                     <td className="p-4 border-b border-slate-200">
                       <p className="block text-sm text-slate-800">
                         {Iqama["Isha"]}
+                      </p>
+                    </td>
+                  </tr>
+                  <tr className="bg-green-100 hover:bg-green-400">
+                    <td className="p-4 border-b border-slate-200">
+                      <p className="block text-sm text-slate-800">
+                        Friday Jumuah
+                      </p>
+                    </td>
+                    <td className="p-4 border-b border-slate-200">
+                      <p className="block text-sm text-slate-800">
+                        1:05
+                      </p>
+                    </td>
+                    <td className="p-4 border-b border-slate-200">
+                      <p className="block text-sm text-slate-800">
+                       1:30
                       </p>
                     </td>
                   </tr>
