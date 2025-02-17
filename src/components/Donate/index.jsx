@@ -2,6 +2,7 @@ import { useOnce } from "../../hooks/useOnce";
 import { styles } from '../../styles';
 import QrCodeImage from "../../assets/qrcode.png";
 import { useEffect, useState } from "react";
+import zeffyImage from "../../assets/zeffy-logo.png";
 export default function Donate() {
 	useOnce(() => {
 		PayPal.Donation.Button({
@@ -25,12 +26,13 @@ export default function Donate() {
 				<div className="sm:text-xl flex flex-col gap-4 items-center">
 					<div className="rounded shadow-lg sm:text-xl flex flex-col gap-4 items-center bg-green-200 p-5 w-full">
 						<div>The Messenger of Allah ﷺ said,</div>
-						<div className="text-green-800 text-4xl/loose text-center " style={{fontFamily:"KFGQPC"}}>مَنْ بَنَى مَسْجِدًا يَبْتَغِي بِهِ وَجْهَ اللَّهِ، بَنَى اللَّهُ لَهُ مِثْلَهُ فِي الْجَنَّةِ</div>
+						<div className="text-green-800 text-4xl/loose text-center " style={{ fontFamily: "KFGQPC" }}>مَنْ بَنَى مَسْجِدًا يَبْتَغِي بِهِ وَجْهَ اللَّهِ، بَنَى اللَّهُ لَهُ مِثْلَهُ فِي الْجَنَّةِ</div>
 						<div>Whoever builds a mosque for Allah, Allah builds a house for him in Paradise (Jannah).</div>
 						<div>[Sahih Al-Bukhari]</div>
 					</div>
 					<div className="flex flex-wrap justify-center gap-6">
 						<BankDetails />
+						<ZeffyDonate />
 						<PaypalDonate />
 						<QrCode />
 					</div>
@@ -49,7 +51,14 @@ function PaypalDonate() {
 		</div>
 	</div>;
 }
-
+function ZeffyDonate() {
+	return <div className="w-64 h-64 rounded overflow-hidden shadow-lg p-5 text-sm flex items-center justify-center text-center">
+		<a target="_blank" href="https://www.zeffy.com/en-US/donation-form/donate-to-noori-qudsi-academy" className=" rounded-md p-3 ">
+		<img src={zeffyImage} alt="Zeffy" width={"102px"} height={"32px"} />
+			<div>(No fee)</div>
+		</a>
+	</div>;
+}
 function QrCode() {
 	return <div className="w-64 h-64 rounded overflow-hidden shadow-lg text-sm flex items-center justify-center text-center">
 		<div>
@@ -68,20 +77,20 @@ function BankDetails() {
 		Account #: ${accountNumber}
 		`
 		try {
-		  await navigator.clipboard.writeText(textToCopy);
-		  setShowCopiedToClipboard(true);
+			await navigator.clipboard.writeText(textToCopy);
+			setShowCopiedToClipboard(true);
 		} catch (err) {
 		}
-	  }
-	  useEffect(()=>{
+	}
+	useEffect(() => {
 		let timerId = 0;
-		if(showCopiedToClipboard){
-			timerId = setTimeout(()=>{
+		if (showCopiedToClipboard) {
+			timerId = setTimeout(() => {
 				setShowCopiedToClipboard(false);
 			}, 3000)
 		}
-		return ()=> clearTimeout(timerId)
-	  }, [showCopiedToClipboard])
+		return () => clearTimeout(timerId)
+	}, [showCopiedToClipboard])
 
 	return <div className="w-64 h-64 rounded overflow-hidden shadow-lg p-5 text-sm flex items-center justify-center text-center">
 		<div>
@@ -93,7 +102,7 @@ function BankDetails() {
 				</button>
 			</div>
 			<div className="text-[10px]">
-			{showCopiedToClipboard? "✅ Bank details copied to clipboard":" "}
+				{showCopiedToClipboard ? "✅ Bank details copied to clipboard" : " "}
 			</div>
 		</div>
 	</div>;
