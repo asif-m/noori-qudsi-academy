@@ -25,7 +25,7 @@ export default function Donate() {
 				<div className="sm:text-xl flex flex-col gap-4 items-center">
 					<div className="rounded shadow-lg sm:text-xl flex flex-col gap-4 items-center bg-green-200 p-5 w-full">
 						<div>The Messenger of Allah ﷺ said,</div>
-						<div className="text-green-800">مَنْ بَنَى مَسْجِدًا يَبْتَغِي بِهِ وَجْهَ اللَّهِ، بَنَى اللَّهُ لَهُ مِثْلَهُ فِي الْجَنَّةِ</div>
+						<div className="text-green-800 text-4xl/loose text-center " style={{fontFamily:"KFGQPC"}}>مَنْ بَنَى مَسْجِدًا يَبْتَغِي بِهِ وَجْهَ اللَّهِ، بَنَى اللَّهُ لَهُ مِثْلَهُ فِي الْجَنَّةِ</div>
 						<div>Whoever builds a mosque for Allah, Allah builds a house for him in Paradise (Jannah).</div>
 						<div>[Sahih Al-Bukhari]</div>
 					</div>

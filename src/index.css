@@ -25,3 +25,9 @@
   background: -webkit-linear-gradient(to right, #434343, #000000);
   background: linear-gradient(to right, #434343, #000000);
 }
+
+@font-face{
+  font-family: "KFGQPC";
+  src:local("KFGQPC"),
+  url('./assets/KFGQPC.otf') 
+}
