@@ -63,6 +63,22 @@ export const PrayerTime = () => {
                   </tr>
                 </thead>
                 <tbody>
+                <tr className="hover:bg-slate-50">
+                    <td className="p-4 border-b border-slate-200">
+                      <p className="block text-xs text-slate-800 italic">
+                        Stop Sehri
+                      </p>
+                    </td>
+                    <td className="p-4 border-b border-slate-200">
+                      <p className="block text-xs text-slate-800 italic">
+                        5:03
+                      </p>
+                    </td>
+                    <td className="p-4 border-b border-slate-200">
+                      <p className="block text-xs text-slate-800">
+                      </p>
+                    </td>
+                  </tr>
                   <tr className="hover:bg-slate-50">
                     <td className="p-4 border-b border-slate-200">
                       <p className="block text-sm text-slate-800">
