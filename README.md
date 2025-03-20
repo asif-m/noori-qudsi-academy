@@ -1,5 +1,7 @@
 This is the app for the Noori Qudsi Academy website.
 
+The code is in React.Js with TailwindCSS
+
 Install dependency
 
 ```
