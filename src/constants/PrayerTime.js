@@ -1,8 +1,8 @@
 export const Iqama = {
-  Fajr: "5:45",
+  Fajr: "5:30",
   Zuhr: "1:30",
-  Asr: "6:00",
-  Isha: "9:15",
+  Asr: "6:15",
+  Isha: "9:45",
 };
 export const PrayerTimeInManteca = [
   {
