@@ -1,4 +1,5 @@
 import { Address } from "./Address";
+import { Announcements } from "./Announcement";
 import { useState } from "react";
 import { PrayerTimeInManteca } from "../../constants/PrayerTime";
 import { Iqama } from "../../constants/iqama";
@@ -22,6 +23,7 @@ export const PrayerTime = () => {
 
   return (
     <div>
+      <Announcements></Announcements>
       <div className=" rounded overflow-hidden shadow-lg">
         <div className="px-6 py-4">
           <div className="font-bold text-xl mb-2">
