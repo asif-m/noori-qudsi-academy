@@ -1,6 +1,7 @@
 import { Address } from "./Address";
 import { useState } from "react";
-import { PrayerTimeInManteca, Iqama } from "../../constants/PrayerTime";
+import { PrayerTimeInManteca } from "../../constants/PrayerTime";
+import { Iqama } from "../../constants/iqama";
 
 export const PrayerTime = () => {
   const [currentDate, setCurrentDate] = useState(new Date());
