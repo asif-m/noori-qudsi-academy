@@ -1,6 +1,6 @@
 import { BrowserRouter } from 'react-router-dom';
-import Home from "./components/Home";
 import Navbar from "./components/Navbar";
+import { PrayerTime } from "./components/Home/PrayerTime";
 import About from "./components/About";
 import Events from "./components/Events/Events";
 import Footer from "./components/Footer";
@@ -27,11 +27,11 @@ const App = () => {
       }}
     >
       <div className="">
-        <div className="top-0 z-20">
+        <div className="fixed top-0 left-0 right-0 z-50 shadow-md">
           <Navbar />
+          <PrayerTime />
         </div>
-        <div className={`${styles.padding}`}>
-          <Home />
+        <div className={`${styles.padding} mt-[150px]`}>
           <About />
           <div ref={donateSectionRef} id="donate"></div>
           <Donate />

@@ -4,7 +4,7 @@ import { styles } from '../styles';
 
 const Navbar = () => {
   return (
-    <nav className={`${styles.paddingX} w-full flex items-center py-3 fixed top-0 bg-yellow-300 z-50`}>
+    <nav className={`${styles.paddingX} w-full flex items-center py-3 bg-yellow-300`}>
       <div className="w-full flex justify-between items-center max-w-7xl mx-auto">
         <Link
           to="/"
