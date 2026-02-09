@@ -29,11 +29,11 @@ const App = () => {
       <div className="">
         <div className="fixed top-0 left-0 right-0 z-50 shadow-md">
           <Navbar />
-          <PrayerTime />
         </div>
-        <div className={`${styles.padding} mt-[150px]`}>
+        <div className={`${styles.paddingX} pt-[70px] pb-10`}>
+          <PrayerTime />
           <About />
-          <div ref={donateSectionRef} id="donate"></div>
+          <div ref={donateSectionRef} id="donate" className="scroll-mt-[70px]"></div>
           <Donate />
           <Events />
         </div>
