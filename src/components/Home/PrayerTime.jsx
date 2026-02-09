@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { PrayerTimeInManteca } from "../../constants/PrayerTime";
-import { Iqama } from "../../constants/iqama";
 
 export const PrayerTime = () => {
   const [currentDate, setCurrentDate] = useState(new Date());
@@ -22,11 +21,11 @@ export const PrayerTime = () => {
   }
 
   const prayers = [
-    { name: "Fajr", begins: prayerTimes?.Fajr, iqama: Iqama.Fajr },
-    { name: "Zuhr", begins: prayerTimes?.Zuhr, iqama: Iqama.Zuhr },
-    { name: "Asr", begins: prayerTimes?.Asr, iqama: Iqama.Asr },
-    { name: "Maghrib", begins: prayerTimes?.Maghrib, iqama: prayerTimes?.Maghrib },
-    { name: "Isha", begins: prayerTimes?.Isha, iqama: Iqama.Isha },
+    { name: "Fajr", begins: prayerTimes?.Fajr, iqama: prayerTimes?.FajrIqama },
+    { name: "Zuhr", begins: prayerTimes?.Zuhr, iqama: prayerTimes?.ZuhrIqama },
+    { name: "Asr", begins: prayerTimes?.Asr, iqama: prayerTimes?.AsrIqama },
+    { name: "Maghrib", begins: prayerTimes?.Maghrib, iqama: prayerTimes?.MaghribIqama },
+    { name: "Isha", begins: prayerTimes?.Isha, iqama: prayerTimes?.IshaIqama },
   ];
 
   return (
