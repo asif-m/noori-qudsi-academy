@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { PrayerTimeInManteca } from "../../constants/PrayerTime";
+import { getIqamaForDate } from "../../constants/iqama";
 
 export const PrayerTime = () => {
   const [currentDate, setCurrentDate] = useState(new Date());
@@ -20,12 +21,48 @@ export const PrayerTime = () => {
     return result;
   }
 
+  const iqamaTimes = getIqamaForDate(currentDate);
+
+  // Parse a time string like "8:46 PM" into total minutes for comparison
+  function parseTimeToMinutes(timeStr) {
+    if (!timeStr) return 0;
+    const match = timeStr.match(/(\d+):(\d+)\s*(AM|PM)/i);
+    if (!match) return 0;
+    let hours = parseInt(match[1]);
+    const minutes = parseInt(match[2]);
+    const period = match[3].toUpperCase();
+    if (period === "PM" && hours !== 12) hours += 12;
+    if (period === "AM" && hours === 12) hours = 0;
+    return hours * 60 + minutes;
+  }
+
+  // Format total minutes back to "H:MM AM/PM"
+  function formatMinutesToTime(totalMinutes) {
+    let hours = Math.floor(totalMinutes / 60) % 24;
+    const minutes = totalMinutes % 60;
+    const period = hours >= 12 ? "PM" : "AM";
+    if (hours > 12) hours -= 12;
+    if (hours === 0) hours = 12;
+    return `${hours}:${String(minutes).padStart(2, "0")} ${period}`;
+  }
+
+  // If begins time >= iqama time, shift iqama to next :00/:15/:30/:45 after begins
+  function adjustIqama(begins, iqama) {
+    if (!begins || !iqama) return iqama;
+    const beginsMin = parseTimeToMinutes(begins);
+    const iqamaMin = parseTimeToMinutes(iqama);
+    if (beginsMin >= iqamaMin) {
+      return formatMinutesToTime(Math.ceil((beginsMin + 1) / 15) * 15);
+    }
+    return iqama;
+  }
+
   const prayers = [
-    { name: "Fajr", begins: prayerTimes?.Fajr, iqama: prayerTimes?.FajrIqama },
-    { name: "Zuhr", begins: prayerTimes?.Zuhr, iqama: prayerTimes?.ZuhrIqama },
-    { name: "Asr", begins: prayerTimes?.Asr, iqama: prayerTimes?.AsrIqama },
-    { name: "Maghrib", begins: prayerTimes?.Maghrib, iqama: prayerTimes?.MaghribIqama },
-    { name: "Isha", begins: prayerTimes?.Isha, iqama: prayerTimes?.IshaIqama },
+    { name: "Fajr", begins: prayerTimes?.Fajr, iqama: adjustIqama(prayerTimes?.Fajr, iqamaTimes.FajrIqama) },
+    { name: "Zuhr", begins: prayerTimes?.Zuhr, iqama: adjustIqama(prayerTimes?.Zuhr, iqamaTimes.ZuhrIqama) },
+    { name: "Asr", begins: prayerTimes?.Asr, iqama: adjustIqama(prayerTimes?.Asr, iqamaTimes.AsrIqama) },
+    { name: "Maghrib", begins: prayerTimes?.Maghrib, iqama: adjustIqama(prayerTimes?.Maghrib, iqamaTimes.MaghribIqama) },
+    { name: "Isha", begins: prayerTimes?.Isha, iqama: adjustIqama(prayerTimes?.Isha, iqamaTimes.IshaIqama) },
   ];
 
   return (
