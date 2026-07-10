@@ -4,6 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Common Development Commands
 
+
 This is a React.js application built with Vite and styled with TailwindCSS.
 
 **Development:**
