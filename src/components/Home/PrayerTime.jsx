@@ -66,9 +66,9 @@ export const PrayerTime = () => {
   ];
 
   return (
-    <div className="bg-white text-gray-800">
+    <div className="bg-white text-gray-800 rounded-2xl shadow-sm ring-1 ring-gray-100 overflow-hidden">
       {/* Date navigation */}
-      <div className="flex items-center justify-center gap-3 px-4 py-2 text-sm border-b border-gray-200">
+      <div className="flex items-center justify-center gap-3 px-4 py-2.5 text-sm border-b border-gray-100 bg-primary/5">
         <button
           className="text-lg text-primary hover:text-green-800 transition-colors"
           onClick={() => setCurrentDate((p) => addDays(p, -1))}
@@ -89,17 +89,17 @@ export const PrayerTime = () => {
         <span>Sehri: <span className="font-bold text-gray-800">5:03</span></span>
         <span>Sunrise: <span className="font-bold text-gray-800">{prayerTimes?.Sunrise}</span></span>
         <span>Zawal: <span className="font-bold text-gray-800">{prayerTimes?.Zawal}</span></span>
-        <span className="text-gray-300">|</span>
+        <span className="hidden sm:inline text-gray-300">|</span>
         <span>Jumuah: <span className="font-bold text-gray-800">Bayaan 1:05 PM &middot; Khutbah 1:30 PM</span></span>
       </div>
 
       {/* Prayer times table - Cambridge style */}
-      <div className="overflow-x-auto px-2 py-2">
-        <table className="w-full min-w-[420px] text-center">
+      <div className="overflow-x-auto px-0 sm:px-2 py-2">
+        <table className="w-full text-center">
           <thead>
             <tr>
               {prayers.map((prayer) => (
-                <th key={prayer.name} className="text-xs font-semibold uppercase tracking-wide text-primary py-2 px-2">
+                <th key={prayer.name} className="text-[11px] sm:text-xs font-semibold uppercase tracking-wide text-primary py-2 px-0.5 sm:px-2">
                   {prayer.name}
                 </th>
               ))}
@@ -109,22 +109,22 @@ export const PrayerTime = () => {
           <tbody>
             <tr className="border-t border-gray-100">
               {prayers.map((prayer) => (
-                <td key={prayer.name} className="text-sm font-bold text-gray-800 py-1.5 px-2 whitespace-nowrap">
+                <td key={prayer.name} className="text-[13px] sm:text-sm font-bold text-gray-800 py-1.5 px-0.5 sm:px-2 whitespace-nowrap">
                   {prayer.begins}
                 </td>
               ))}
-              <td className="text-[11px] font-semibold uppercase tracking-wider text-gray-400 text-left px-2 py-1.5 whitespace-nowrap">
+              <td className="text-[10px] sm:text-[11px] font-semibold uppercase tracking-wider text-gray-400 text-left pl-1 pr-1 sm:px-2 py-1.5 whitespace-nowrap">
                 Begins
               </td>
             </tr>
             <tr className="border-t border-gray-100">
               {prayers.map((prayer) => (
-                <td key={prayer.name} className="text-sm font-bold text-gray-800 py-1.5 px-2 whitespace-nowrap">
+                <td key={prayer.name} className="text-[13px] sm:text-sm font-bold text-gray-800 py-1.5 px-0.5 sm:px-2 whitespace-nowrap">
                   {prayer.iqama}
                 </td>
               ))}
-              <td className="text-[11px] font-semibold uppercase tracking-wider text-gray-400 text-left px-2 py-1.5 whitespace-nowrap">
-                Jama'at
+              <td className="text-[10px] sm:text-[11px] font-semibold uppercase tracking-wider text-gray-400 text-left pl-1 pr-1 sm:px-2 py-1.5 whitespace-nowrap">
+                Jama’at
               </td>
             </tr>
           </tbody>
