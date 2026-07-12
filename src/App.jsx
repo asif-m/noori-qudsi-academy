@@ -2,10 +2,9 @@ import { BrowserRouter } from 'react-router-dom';
 import Navbar from "./components/Navbar";
 import { PrayerTime } from "./components/Home/PrayerTime";
 import About from "./components/About";
-import Events from "./components/Events/Events";
+import { UpcomingEvents, RecentPosts } from "./components/Events/Events";
 import Footer from "./components/Footer";
 import Donate from './components/Donate';
-import { styles } from './styles';
 import { useEffect, useRef } from 'react';
 
 const App = () => {
@@ -26,16 +25,20 @@ const App = () => {
         v7_relativeSplatPath: true,
       }}
     >
-      <div className="">
-        <div className="fixed top-0 left-0 right-0 z-50 shadow-md">
+      <div className="bg-stone-50 min-h-screen">
+        <div className="sticky top-0 z-50 shadow-md">
           <Navbar />
         </div>
-        <div className={`${styles.paddingX} pt-[70px] pb-10`}>
-          <PrayerTime />
-          <About />
-          <div ref={donateSectionRef} id="donate" className="scroll-mt-[70px]"></div>
-          <Donate />
-          <Events />
+        <div className="px-3 sm:px-8 pt-5 pb-14">
+          <div className="max-w-5xl mx-auto flex flex-col gap-12 sm:gap-20">
+            <PrayerTime />
+            <UpcomingEvents />
+            <About />
+            <div ref={donateSectionRef} id="donate" className="scroll-mt-24">
+              <Donate />
+            </div>
+            <RecentPosts />
+          </div>
         </div>
         <Footer></Footer>
       </div>

@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom';
 import logo from "../assets/logo.jpg";
-import { styles } from '../styles';
 
 const Navbar = () => {
   return (
@@ -10,7 +9,6 @@ const Navbar = () => {
           to="/"
           className="flex items-center gap-2 min-w-0"
           onClick={() => {
-            setActive('');
             window.scrollTo(0, 0);
           }}
         >
