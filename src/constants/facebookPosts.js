@@ -7,10 +7,11 @@ export const upcomingEvents = [
 
 // Videos and general posts — shown in the "Recent Posts" section.
 export const recentPosts = [
-  "https://www.youtube.com/watch?v=ukiVDW-tnk8",
-  "https://youtu.be/W6Vv-BX6vK8",
-  "https://youtu.be/6g4mOLKpxJs",
   "https://youtu.be/45_3q0kbLBc",
+  "https://youtu.be/6g4mOLKpxJs", 
   "https://www.youtube.com/watch?v=cg7GPRvVyoI",
   "https://www.youtube.com/watch?v=BQpWGB1Qs1k",
+  "https://www.youtube.com/watch?v=ukiVDW-tnk8",
+  "https://youtu.be/W6Vv-BX6vK8",
+  
 ];
