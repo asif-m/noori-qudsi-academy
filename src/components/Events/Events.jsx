@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import { styles } from "../../styles";
 import { recentPosts, upcomingEvents, facebookPageUrl } from "../../constants/facebookPosts";
 
@@ -21,26 +20,6 @@ function dedupe(list) {
   });
 }
 
-// Load Facebook's embed SDK once, and re-parse whenever FB embeds are present.
-function useFacebookEmbeds(hasFacebook) {
-  useEffect(() => {
-    if (!hasFacebook) return;
-    if (window.FB?.XFBML) {
-      window.FB.XFBML.parse();
-      return;
-    }
-    if (!document.getElementById("facebook-jssdk")) {
-      const script = document.createElement("script");
-      script.id = "facebook-jssdk";
-      script.async = true;
-      script.defer = true;
-      script.crossOrigin = "anonymous";
-      script.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v21.0";
-      document.body.appendChild(script);
-    }
-  }, [hasFacebook]);
-}
-
 function YouTubeCard({ id }) {
   return (
     <div className="w-full max-w-[500px] overflow-hidden rounded-2xl bg-white shadow-sm ring-1 ring-gray-100">
@@ -59,9 +38,34 @@ function YouTubeCard({ id }) {
 }
 
 function FacebookCard({ url }) {
+  // Render via the plain iframe plugin instead of the Facebook JS SDK. The SDK's
+  // FB.XFBML.parse() is blocked by iOS Safari's tracking prevention, so the
+  // SDK-hydrated embed shows up blank on iPhone/iPad. The iframe plugin needs no
+  // client-side script and renders reliably; a fallback link guarantees access
+  // even when the iframe itself is blocked.
+  const src = `https://www.facebook.com/plugins/post.php?href=${encodeURIComponent(
+    url
+  )}&show_text=true&width=350`;
   return (
-    <div className="w-[350px] max-w-full overflow-x-auto">
-      <div className="fb-post" data-href={url} data-width="350" />
+    <div className="w-[350px] max-w-full overflow-hidden rounded-2xl bg-white shadow-sm ring-1 ring-gray-100">
+      <iframe
+        className="h-[500px] w-full"
+        src={src}
+        title="Facebook post"
+        loading="lazy"
+        scrolling="no"
+        frameBorder="0"
+        allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+        allowFullScreen
+      />
+      <a
+        href={url}
+        target="_blank"
+        rel="noreferrer"
+        className="block border-t border-gray-100 px-4 py-2 text-center text-sm font-semibold text-primary transition-colors hover:bg-gray-50"
+      >
+        View on Facebook
+      </a>
     </div>
   );
 }
@@ -86,7 +90,6 @@ function FeedGrid({ items, center }) {
 
 function FeedSection({ items, label, title, emptyState, center }) {
   const list = dedupe(items);
-  useFacebookEmbeds(list.some((url) => !getYouTubeId(url)));
 
   if (list.length === 0 && !emptyState) return null;
 
