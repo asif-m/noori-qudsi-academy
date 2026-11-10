@@ -1,9 +1,9 @@
 export const facebookPageUrl = "https://www.facebook.com/profile.php?id=61557104407187";
 
-// Event flyers / announcements — shown in the "Upcoming Events" section.
-export const upcomingEvents = [
-  "https://www.facebook.com/photo/?fbid=122108415153382599&set=a.122106685731382599",
-];
+// Optional pinned event flyers / announcements — shown above the live Facebook
+// feed in the "Upcoming Events" section. The live feed already shows the newest
+// page posts, so this list can stay empty.
+export const upcomingEvents = [];
 
 // Videos and general posts — shown in the "Recent Posts" section.
 export const recentPosts = [

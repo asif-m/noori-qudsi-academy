@@ -70,6 +70,38 @@ function FacebookCard({ url }) {
   );
 }
 
+function FacebookPageFeed({ url }) {
+  // Page plugin timeline: always shows the page's newest posts, so no links
+  // need to be updated by hand. Same plain-iframe approach as FacebookCard.
+  const src = `https://www.facebook.com/plugins/page.php?href=${encodeURIComponent(
+    url
+  )}&tabs=timeline&width=500&height=700&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=false`;
+  return (
+    <div className="mt-6 flex justify-center">
+      <div className="w-[500px] max-w-full overflow-hidden rounded-2xl bg-white shadow-sm ring-1 ring-gray-100">
+        <iframe
+          className="h-[700px] w-full"
+          src={src}
+          title="Latest Facebook posts"
+          loading="lazy"
+          scrolling="no"
+          frameBorder="0"
+          allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+          allowFullScreen
+        />
+        <a
+          href={url}
+          target="_blank"
+          rel="noreferrer"
+          className="block border-t border-gray-100 px-4 py-2 text-center text-sm font-semibold text-primary transition-colors hover:bg-gray-50"
+        >
+          View on Facebook
+        </a>
+      </div>
+    </div>
+  );
+}
+
 function FeedGrid({ items, center }) {
   const layout = center
     ? "mt-6 flex flex-wrap justify-center gap-6"
@@ -104,7 +136,16 @@ function FeedSection({ items, label, title, emptyState, center }) {
 }
 
 export function UpcomingEvents() {
-  return <FeedSection items={upcomingEvents} label="Join us" title="Upcoming Events" center />;
+  const pinned = dedupe(upcomingEvents);
+  return (
+    <section>
+      <p className={styles.sectionSubText}>Join us</p>
+      <h2 className={styles.sectionHeadText}>Upcoming Events</h2>
+      <div className="mt-3 h-1 w-14 rounded-full bg-yellow-400" />
+      {pinned.length > 0 && <FeedGrid items={pinned} center />}
+      <FacebookPageFeed url={facebookPageUrl} />
+    </section>
+  );
 }
 
 export function RecentPosts() {
